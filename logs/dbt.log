@@ -1,0 +1,134 @@
+[0m16:09:57.560489 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023234D922E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000232374B0E20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000232374B06A0>]}
+
+
+============================== 16:09:57.570462 | abfb2335-b45d-4df9-87bb-1d73aaeb67e4 ==============================
+[0m16:09:57.570462 [info ] [MainThread]: Running with dbt=1.7.18
+[0m16:09:57.572478 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'debug': 'False', 'profiles_dir': 'C:\\Users\\PNam\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt init youtube_dbt', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:09:57.573459 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/PNam/.dbt')}
+[0m16:09:57.574459 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m16:09:57.576459 [debug] [MainThread]: Starter project path: E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\include\starter_project
+[0m16:09:57.627460 [info ] [MainThread]: 
+Your new dbt project "youtube_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:09:57.628458 [info ] [MainThread]: Setting up your profile.
+[0m16:10:04.472042 [info ] [MainThread]: Profile youtube_dbt written to C:\Users\PNam\.dbt\profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m16:10:04.474044 [debug] [MainThread]: Command `dbt init` succeeded at 16:10:04.473044 after 7.00 seconds
+[0m16:10:04.474044 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023234D922E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000232374B0E20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000232374B0CD0>]}
+[0m16:10:04.475043 [debug] [MainThread]: Flushing usage events
+[0m16:44:57.231086 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CF1CCFDEE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CF1DB4F5B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CF1F445610>]}
+
+
+============================== 16:44:57.235085 | b6b7be0c-7df5-42f1-b117-92a255930ad4 ==============================
+[0m16:44:57.235085 [info ] [MainThread]: Running with dbt=1.7.18
+[0m16:44:57.236082 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'profiles_dir': 'C:\\Users\\PNam\\.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt init', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:45:07.700592 [error] [MainThread]: Encountered an error:
+
+[0m16:45:07.702597 [error] [MainThread]: Traceback (most recent call last):
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\cli\requires.py", line 91, in wrapper
+    result, success = func(*args, **kwargs)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\cli\requires.py", line 76, in wrapper
+    return func(*args, **kwargs)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\cli\main.py", line 516, in init
+    results = task.run()
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\task\init.py", line 322, in run
+    project_name = self.get_valid_project_name()
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\task\init.py", line 276, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\click\termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\click\termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m16:45:07.704592 [debug] [MainThread]: Command `dbt init` failed at 16:45:07.704592 after 10.83 seconds
+[0m16:45:07.704592 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CF1CCFDEE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CF1F4603D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CF1F4601C0>]}
+[0m16:45:07.705594 [debug] [MainThread]: Flushing usage events
+[0m16:46:07.181045 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000223CD5922E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000223CFCB46A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000223CFCB4E20>]}
+
+
+============================== 16:46:07.185076 | b209d7e1-9ad0-4b9b-ae0b-f3a4666fe19b ==============================
+[0m16:46:07.185076 [info ] [MainThread]: Running with dbt=1.7.18
+[0m16:46:07.186048 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\PNam\\.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt init postgres', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m16:46:07.188077 [debug] [MainThread]: Starter project path: E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\include\starter_project
+[0m16:46:07.208050 [info ] [MainThread]: 
+Your new dbt project "postgres" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:46:07.209046 [info ] [MainThread]: Setting up your profile.
+[0m16:46:15.946838 [error] [MainThread]: Encountered an error:
+
+[0m16:46:15.948832 [error] [MainThread]: Traceback (most recent call last):
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\cli\requires.py", line 91, in wrapper
+    result, success = func(*args, **kwargs)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\cli\requires.py", line 76, in wrapper
+    return func(*args, **kwargs)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\cli\main.py", line 516, in init
+    results = task.run()
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\task\init.py", line 344, in run
+    self.setup_profile(profile_name)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\task\init.py", line 263, in setup_profile
+    adapter = self.ask_for_adapter_choice()
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\task\init.py", line 244, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\click\termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\click\termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m16:46:15.950863 [debug] [MainThread]: Command `dbt init` failed at 16:46:15.950863 after 8.86 seconds
+[0m16:46:15.951862 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000223CD5922E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000223CFCD8400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000223CFCD8DF0>]}
+[0m16:46:15.951862 [debug] [MainThread]: Flushing usage events
+[0m16:46:40.572908 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A9F5D198B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A9F8445550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A9F8437940>]}
+
+
+============================== 16:46:40.576908 | d40a1951-b3fe-4a7e-9910-04726c13b0d8 ==============================
+[0m16:46:40.576908 [info ] [MainThread]: Running with dbt=1.7.18
+[0m16:46:40.577912 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\PNam\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt init dbt_postgres', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m16:46:40.579938 [debug] [MainThread]: Starter project path: E:\ChuyenMon\Nam_learn_dbt\venv\dbt-env\lib\site-packages\dbt\include\starter_project
+[0m16:46:40.590916 [info ] [MainThread]: 
+Your new dbt project "dbt_postgres" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:46:40.591909 [info ] [MainThread]: Setting up your profile.
+[0m16:47:36.356711 [info ] [MainThread]: Profile dbt_postgres written to C:\Users\PNam\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m16:47:36.358722 [debug] [MainThread]: Command `dbt init` succeeded at 16:47:36.357692 after 55.86 seconds
+[0m16:47:36.358722 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A9F5D198B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A9F68D1730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A9F8445550>]}
+[0m16:47:36.359722 [debug] [MainThread]: Flushing usage events
