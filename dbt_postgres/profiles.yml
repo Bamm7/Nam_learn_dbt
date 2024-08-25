@@ -1,12 +1,22 @@
 dbt_postgres:
+  target: dev
   outputs:
     dev:
       dbname: Cafe_rewards_offers
       host: localhost
-      pass: admin
-      port: 5432
-      schema: Cafe_rewards_offers
-      threads: 1
       type: postgres
       user: postgres
-  target: dev
+      pass: admin
+      port: 5432
+      schema: public
+      threads: 1
+
+    uat:
+      dbname: Cafe_rewards_offers
+      host: localhost
+      type: postgres
+      user: postgres
+      pass: admin
+      port: 5432
+      schema: public
+      threads: 1

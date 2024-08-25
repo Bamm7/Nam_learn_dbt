@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: Practice_with_source
+    description: 'List of names customer that buy coffee'
+    database: Cafe_rewards_offers
+    schema: public
+    tables:
+      - name: customers
+        description: 'Detail about customer with id'

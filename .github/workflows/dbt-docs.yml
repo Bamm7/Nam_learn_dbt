@@ -1,0 +1,93 @@
+name: Deploy DBT content to Pages
+
+on:
+  # Runs after DBT Slim CI Pipeline is succeed
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['First action']
+    types: [completed]
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+env:
+  GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+  GCP_SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+  DBT_PROFILES_DIR: "${{github.workspace}}/.github/dbt-profiles"
+
+  GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/.github/gcp_credentials_config/nonprod_google_external_account_config.json
+  # Use the pre-created cert bundle (for our RHEL runners) which includes IAG+proxy certs.
+  # Could look up using the $SSL_CERT_DIR env var, but hard-coding allows to set at the top level env block.
+  SSL_CERT_FILE: /etc/ssl/certs/ca-bundle.crt
+  REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-bundle.crt
+
+jobs:
+  # Single deploy job since we're just deploying every time
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: [ self-hosted , gdp-domain-automation-nonprod]
+    defaults:
+      run:
+        working-directory: dbt
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: "Install Dependencies"
+        run: |
+          # Install uv
+          python3.11 -m pip install uv
+          uv venv --python 3.11
+ 
+          source .venv/bin/activate
+
+          # Install dependencies
+          uv pip install -r requirements.txt -r dev-requirements.txt --index-url 'https://nexus3.auiag.corp/repos/repository/ddo-pypi/simple/'
+
+          # Ensure venv is on the path for other steps
+          echo PATH=$PATH >> $GITHUB_ENV
+
+      - name: "Authenticate to Google Cloud"
+        id: auth
+        run: |
+          gcloud auth login --update-adc --cred-file="$GOOGLE_APPLICATION_CREDENTIALS" --quiet
+          gcloud config set auth/impersonate_service_account "${{ env.GCP_SERVICE_ACCOUNT }}"
+
+      # Generate DBT Docs
+      - name: Generate Docs
+        id: docs
+        env:
+          DBT_CI_DATASET: ci_${{ github.repository_owner }}_${{ github.event.repository.name }}
+        run: |
+          dbt deps --project-dir dbt
+          dbt docs generate --project-dir dbt --profiles-dir ${{ env.DBT_PROFILES_DIR }} --target-path dbt-docs --vars '{gdp_environment: GDP_DEV_A}'
+
+      # Build and upload artifacts
+      - name: Upload DBT docs Pages artifact
+        id: build
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: dbt/dbt-docs
+          name: dbt-docs
+
+      # Publish Docs
+      - name: Publish DBT docs to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          artifact_name: dbt-docs
