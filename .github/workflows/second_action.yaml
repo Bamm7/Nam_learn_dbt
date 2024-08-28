@@ -1,13 +1,14 @@
-name: First action
+name: Second action
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ['First action']
+    types: [completed]
 
 jobs:
-  first:
+  second:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - run: echo "First action successfully finished!"
+      - run: echo "Second action successfully finished!"
