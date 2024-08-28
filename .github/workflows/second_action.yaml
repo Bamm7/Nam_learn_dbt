@@ -1,0 +1,13 @@
+name: First action
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First action successfully finished!"
